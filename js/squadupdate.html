@@ -18,7 +18,7 @@
 </script>
 </head>
 <body>
- <!--table>
+ <table>
   <tr>
    <td>Id: </td>
    <td><input type="text" name="id" id="user_id" required  /></td>
@@ -57,7 +57,7 @@
     <input type="button" value="Delete" onclick="delete_user();" />
    </td>
   </tr>
- </table-->
+ </table>
  
  <h3>Squad Tournament List</h3>
  
@@ -79,7 +79,7 @@
  <script>
  
   var tblUsers = document.getElementById('tbl_users_list');
-  var databaseRef = firebase.database().ref('Tournament-SQUAD/');
+  var databaseRef = firebase.database().ref('TournamentSQUAD/');
   var rowIndex = 1;
   
   databaseRef.once('value', function(snapshot) {
@@ -132,7 +132,7 @@
    }
    
    var updates = {};
-   updates['/Tournament-SQUAD/' + uid] = data;
+   updates['/TournamentSQUAD/' + uid] = data;
    firebase.database().ref().update(updates);
    
    alert('The user is created successfully!');
@@ -160,7 +160,7 @@
    }
    
    var updates = {};
-   updates['/Tournament-SQUAD/' + user_id] = data;
+   updates['/TournamentSQUAD/' + user_id] = data;
    firebase.database().ref().update(updates);
    
    alert('The user is updated successfully!');
@@ -171,7 +171,7 @@
   function delete_user(){
    var user_id = document.getElementById('user_id').value;
   
-   firebase.database().ref().child('/Tournament-SQUAD/' + user_id).remove();
+   firebase.database().ref().child('/TournamentSQUAD/' + user_id).remove();
    alert('The user is deleted successfully!');
    reload_page();
   }
