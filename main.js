@@ -58,7 +58,7 @@ function saveMessage(name, email, phone, message){
   });
 }
 const list = document querySelector("#list");
-db.collection("cities").get().then(function(querySnapshot) {
+db.collection("Contact form").get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
       list.innerHTML += "<p>"+ doc.data().name +"</p>" 
     });
