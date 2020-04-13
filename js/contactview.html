@@ -1,0 +1,137 @@
+<html>
+<head>
+ <title>Firebase Realtime Database Web</title>
+ <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+ <script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyA-REIZa2l9qWOaHKXmRhHdnw4g3RYy-VQ",
+    authDomain: "contact-form-73a33.firebaseapp.com",
+    databaseURL: "https://contact-form-73a33.firebaseio.com",
+    projectId: "contact-form-73a33",
+    storageBucket: "contact-form-73a33.appspot.com",
+    messagingSenderId: "560391989288",
+    appId: "1:560391989288:web:5a8059fba3efd0c1c6ad1d"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+</head>
+<body>
+ <!--table>
+  <tr>
+   <td>Id: </td>
+   <td><input type="text" name="id" id="user_id" required /></td>
+  </tr>
+  <tr>
+   <td>User Name: </td>
+   <td><input type="text" name="name" id="name" /></td>
+  </tr>
+  <tr>
+   <td>User Phone Number: </td>
+   <td><input type="text" name="phone" id="phone" /></td>
+  </tr>
+  <tr>
+   <td colspan="2">
+    <input type="button" value="Save" onclick="save_user();" />
+    <input type="button" value="Update" onclick="update_user();" />
+    <input type="button" value="Delete" onclick="delete_user();" />
+   </td>
+  </tr>
+ </table-->
+ 
+ <h3>Users List</h3>
+ 
+ <table id="tbl_users_list" border="1">
+  <tr>
+   <td>#ID</td>
+   <td>NAME</td>
+   <td>Phone</td>
+   <td>Email</td>
+   <td>Message</td>
+  </tr>
+ </table>
+ 
+ <script>
+ 
+  var tblUsers = document.getElementById('tbl_users_list');
+  var databaseRef = firebase.database().ref('messages/');
+  var rowIndex = 1;
+  
+  databaseRef.once('value', function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+   var childKey = childSnapshot.key;
+   var childData = childSnapshot.val();
+   
+   var row = tblUsers.insertRow(rowIndex);
+   var cellId = row.insertCell(0);
+   var cellName = row.insertCell(1);
+   var cellP = row.insertCell(2);
+   var cellE = row.insertCell(3);   
+   var cellM = row.insertCell(4);
+   cellId.appendChild(document.createTextNode(childKey));
+   cellName.appendChild(document.createTextNode(childData.name));
+   cellP.appendChild(document.createTextNode(childData.phone));
+   cellE.appendChild(document.createTextNode(childData.email));
+   cellM.appendChild(document.createTextNode(childData.message));
+   rowIndex = rowIndex + 1;
+    });
+  });
+   
+  function save_user(){
+   var name = document.getElementById('name').value;
+
+ var phone = document.getElementById('phone').value;  
+   var uid = firebase.database().ref().child('users').push().key;
+   
+   var data = {
+    user_id: uid,
+    name: name,
+    phone: phone
+   }
+   
+   var updates = {};
+   updates['/messages/' + uid] = data;
+   firebase.database().ref().update(updates);
+   
+   alert('The user is created successfully!');
+   reload_page();
+  }
+  
+  function update_user(){
+   var name = document.getElementById('name').value;
+   var phone = document.getElementById('phone').value;
+   var user_id = document.getElementById('user_id').value;
+
+   var data = {
+    user_id: user_id,
+    name: name,
+    phone: phone
+   }
+   
+   var updates = {};
+   updates['/messages/' + user_id] = data;
+   firebase.database().ref().update(updates);
+   
+   alert('The user is updated successfully!');
+   
+   reload_page();
+  }
+  
+  function delete_user(){
+   var user_id = document.getElementById('user_id').value;
+  
+   firebase.database().ref().child('/messages/' + user_id).remove();
+   alert('The user is deleted successfully!');
+   reload_page();
+  }
+  
+  function reload_page(){
+   window.location.reload();
+  }
+  
+ </script>
+ 
+</body>
+</html>
+

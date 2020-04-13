@@ -1,0 +1,187 @@
+<html>
+<head>
+ <title>Firebase Realtime Database Web</title>
+ <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+ <script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyA-REIZa2l9qWOaHKXmRhHdnw4g3RYy-VQ",
+    authDomain: "contact-form-73a33.firebaseapp.com",
+    databaseURL: "https://contact-form-73a33.firebaseio.com",
+    projectId: "contact-form-73a33",
+    storageBucket: "contact-form-73a33.appspot.com",
+    messagingSenderId: "560391989288",
+    appId: "1:560391989288:web:5a8059fba3efd0c1c6ad1d"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+</head>
+<body>
+ <!--table>
+  <tr>
+   <td>Id: </td>
+   <td><input type="text" name="id" id="user_id" required  /></td>
+  </tr>
+  <tr>
+   <td>User Name: </td>
+   <td><input type="text" name="name" id="name" /></td>
+  </tr>
+  <tr>
+   <td>User Phone Number: </td>
+   <td><input type="text" name="phone" id="phone" /></td>
+  </tr>
+  <tr>
+   <td>User Email Id: </td>
+   <td><input type="text" name="phone" id="email" /></td>
+  </tr>
+  <tr>
+   <td>TM1 :</td>
+   <td><input type="text" name="phone" id="tm1" /></td>
+  </tr>
+  <tr>
+   <td>TM2 :</td>
+   <td><input type="text" name="phone" id="tm2" /></td>
+  </tr>
+  <tr>
+   <td>TM3 :</td>
+   <td><input type="text" name="phone" id="tm3" /></td>
+  </tr>
+  <tr>
+   <td>TM4 :</td>
+   <td><input type="text" name="phone" id="tm4" /></td>
+  </tr>
+     <td colspan="2">
+    <input type="button" value="Save" onclick="save_user();" />
+    <input type="button" value="Update" onclick="update_user();" />
+    <input type="button" value="Delete" onclick="delete_user();" />
+   </td>
+  </tr>
+ </table-->
+ 
+ <h3>Squad Tournament List</h3>
+ 
+ <table id="tbl_users_list" border="1">
+  <tr>
+   <td>#ID</td>
+   <td>NAME </td>
+   <td>Phone</td>
+   <td>Email</td>
+   <td>TM1 ID</td>
+   <td>TM2 ID</td>
+   <td>TM3 ID</td>
+   <td>TM4 ID</td>
+   <td>Message</td>
+
+  </tr>
+ </table>
+ 
+ <script>
+ 
+  var tblUsers = document.getElementById('tbl_users_list');
+  var databaseRef = firebase.database().ref('Tournament-SQUAD/');
+  var rowIndex = 1;
+  
+  databaseRef.once('value', function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+   var childKey = childSnapshot.key;
+   var childData = childSnapshot.val();
+   
+   var row = tblUsers.insertRow(rowIndex);
+   var cellId = row.insertCell(0);
+   var cellName = row.insertCell(1);
+   var cellP = row.insertCell(2);
+   var cellE = row.insertCell(3);   
+   var cell1 = row.insertCell(4);
+   var cell2 = row.insertCell(5);
+   var cell3 = row.insertCell(6);
+   var cell4 = row.insertCell(7);
+   var cellM = row.insertCell(8);
+   cellId.appendChild(document.createTextNode(childKey));
+   cellName.appendChild(document.createTextNode(childData.name));
+   cellP.appendChild(document.createTextNode(childData.phone));
+   cellE.appendChild(document.createTextNode(childData.email));
+   cell1.appendChild(document.createTextNode(childData.tm1));
+   cell2.appendChild(document.createTextNode(childData.tm2));   
+   cell3.appendChild(document.createTextNode(childData.tm3));
+   cell4.appendChild(document.createTextNode(childData.tm4));
+   cellM.appendChild(document.createTextNode(childData.message));
+   rowIndex = rowIndex + 1;
+    });
+  });
+   
+  function save_user(){
+   var name = document.getElementById('name').value;
+   var phone = document.getElementById('phone').value; 
+   var email= document.getElementById('email').value; 
+   var tm1= document.getElementById('tm1').value; 
+   var tm2= document.getElementById('tm2').value; 
+   var tm3= document.getElementById('tm3').value; 
+   var tm4= document.getElementById('tm4').value;  
+   var uid = firebase.database().ref().child('users').push().key;
+   
+   var data = {
+    user_id: uid,
+    name: name,
+    phone: phone,
+    email:email,
+    tm1:tm1,
+    tm2:tm2,
+    tm3:tm3,
+    tm4:tm4
+   }
+   
+   var updates = {};
+   updates['/Tournament-SQUAD/' + uid] = data;
+   firebase.database().ref().update(updates);
+   
+   alert('The user is created successfully!');
+   reload_page();
+  }
+  
+  function update_user(){
+   var name = document.getElementById('name').value;
+   var phone = document.getElementById('phone').value;
+   var email= document.getElementById('email').value; 
+   var tm1= document.getElementById('tm1').value; 
+   var tm2= document.getElementById('tm2').value; 
+   var tm3= document.getElementById('tm3').value; 
+   var tm4= document.getElementById('tm4').value;  
+
+   var data = {
+    user_id: user_id,
+    name: name,
+    phone: phone,
+    email:email,
+    tm1:tm1,
+    tm2:tm2,
+    tm3:tm3,
+    tm4:tm4
+   }
+   
+   var updates = {};
+   updates['/Tournament-SQUAD/' + user_id] = data;
+   firebase.database().ref().update(updates);
+   
+   alert('The user is updated successfully!');
+   
+   reload_page();
+  }
+  
+  function delete_user(){
+   var user_id = document.getElementById('user_id').value;
+  
+   firebase.database().ref().child('/Tournament-SQUAD/' + user_id).remove();
+   alert('The user is deleted successfully!');
+   reload_page();
+  }
+  
+  function reload_page(){
+   window.location.reload();
+  }
+  
+ </script>
+ 
+</body>
+</html>
+
