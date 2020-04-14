@@ -195,6 +195,9 @@ h3:after {
 </head>
 <body>
  <table>
+  <td>Id: </td>
+   <td><input type="text" name="id" id="user_id" required  /></td>
+  </tr>
   <tr>
    <td>Player Id: </td>
    <td><input type="text" name="id" id="pi" /></td>
@@ -266,12 +269,15 @@ h3:after {
    var cellPz = row.insertCell(3);   
    var cellM = row.insertCell(4);   
    var cellD = row.insertCell(5);
+     
+   var uid = firebase.database().ref().child('users').push().key;
    cellTn.appendChild(document.createTextNode(childData.tn));
    cellPi.appendChild(document.createTextNode(childData.pi));
    cellPl.appendChild(document.createTextNode(childData.pl));
    cellPz.appendChild(document.createTextNode(childData.pz));
    cellM.appendChild(document.createTextNode(childData.m));
    cellD.appendChild(document.createTextNode(childData.d));
+     
    rowIndex = rowIndex + 1;
     });
   });
