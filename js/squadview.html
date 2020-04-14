@@ -16,20 +16,93 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 </script>
-<link rel="icon" type="image/png" href="https://colorlib.com/etc/tb/Table_Responsive_v1/images/icons/favicon.ico" />
+<style>
+ body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.25;
+}
 
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/bootstrap/css/bootstrap.min.css">
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
 
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
 
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/animate/animate.css">
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
 
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/select2/select2.min.css">
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
 
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/perfect-scrollbar/perfect-scrollbar.css">
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
 
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/css/util.css">
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/css/main.css">
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+ </style>
 </head>
 <body>
  <!--table> 
@@ -73,13 +146,11 @@
   </tr>
  </table-->
  <h3>Squad Tournament List</h3>
- <div class="limiter">
-<div class="container-table100">
-<div class="wrap-table100">
-<div class="table100">
- <table id="tbl_users_list" border="1">
-  <tr class="table100-head">
-   <th class="column1">#ID</th>
+<table id="tbl_users_list" >
+  <caption>Statement Summary</caption>
+  <thead>
+    <tr>
+   <th>#ID</th>
    <th>NAME </th>
    <th>Phone</th>
    <th>Email</th>
@@ -88,13 +159,11 @@
    <th>TM3 ID</th>
    <th>TM4 ID</th>
    <th>Message</th>
-
-  </tr>
- </table>
- </div>
-</div>
-</div>
-</div>
+    </tr>
+  </thead>
+  
+</table>
+ 
  <script>
  
   var tblUsers = document.getElementById('tbl_users_list');
