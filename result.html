@@ -195,9 +195,7 @@ h3:after {
 </head>
 <body>
  <table>
-  <td>Id: </td>
-   <td><input type="text" name="id" id="user_id" required  /></td>
-  </tr>
+  
   <tr>
    <td>Player Id: </td>
    <td><input type="text" name="id" id="pi" /></td>
@@ -270,7 +268,7 @@ h3:after {
    var cellM = row.insertCell(4);   
    var cellD = row.insertCell(5);
      
-   var uid = firebase.database().ref().child('users').push().key;
+  
    cellTn.appendChild(document.createTextNode(childData.tn));
    cellPi.appendChild(document.createTextNode(childData.pi));
    cellPl.appendChild(document.createTextNode(childData.pl));
@@ -300,7 +298,7 @@ h3:after {
    }
    
    var updates = {};
-   updates['/result/' + uid] = data;
+  
    firebase.database().ref().update(updates);
    
    alert('The user is created successfully!');
@@ -325,7 +323,7 @@ h3:after {
    }
    
    var updates = {};
-   updates['/result/' + user_id] = data;
+  
    firebase.database().ref().update(updates);
    
    alert('The user is updated successfully!');
@@ -334,9 +332,9 @@ h3:after {
   }
   
   function delete_user(){
-   var user_id = document.getElementById('user_id').value;
+   var user_id = document.getElementById('pi').value;
   
-   firebase.database().ref().child('/result/' + user_id).remove();
+   firebase.database().ref().child('/result/' + pi).remove();
    alert('The user is deleted successfully!');
    reload_page();
   }
