@@ -1,0 +1,366 @@
+<html>
+<head>
+ <title>BBMPL ontact list</title>
+ <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+ <script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyA-REIZa2l9qWOaHKXmRhHdnw4g3RYy-VQ",
+    authDomain: "contact-form-73a33.firebaseapp.com",
+    databaseURL: "https://contact-form-73a33.firebaseio.com",
+    projectId: "contact-form-73a33",
+    storageBucket: "contact-form-73a33.appspot.com",
+    messagingSenderId: "560391989288",
+    appId: "1:560391989288:web:5a8059fba3efd0c1c6ad1d"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+ <style>
+ @import 'https://fonts.googleapis.com/css?family=Open+Sans:600,700';
+
+* {font-family: 'Open Sans', sans-serif;}
+
+.rwd-table {
+  margin: auto;
+  min-width: 300px;
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+.rwd-table tr:first-child {
+  border-top: none;
+  background: #428bca;
+  color: #fff;
+}
+
+.rwd-table tr {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: #f5f9fc;
+}
+
+.rwd-table tr:nth-child(odd):not(:first-child) {
+  background-color: #ebf3f9;
+}
+
+.rwd-table th {
+  display: none;
+}
+
+.rwd-table td {
+  display: block;
+}
+
+.rwd-table td:first-child {
+  margin-top: .5em;
+}
+
+.rwd-table td:last-child {
+  margin-bottom: .5em;
+}
+
+.rwd-table td:before {
+  content: attr(data-th) ": ";
+  font-weight: bold;
+  width: 120px;
+  display: inline-block;
+  color: #000;
+}
+
+.rwd-table th,
+.rwd-table td {
+  text-align: left;
+}
+
+.rwd-table {
+  color: #333;
+  border-radius: .4em;
+  overflow: hidden;
+}
+
+.rwd-table tr {
+  border-color: #bfbfbf;
+}
+
+.rwd-table th,
+.rwd-table td {
+  padding: .5em 1em;
+}
+@media screen and (max-width: 601px) {
+  .rwd-table tr:nth-child(2) {
+    border-top: none;
+  }
+}
+@media screen and (min-width: 600px) {
+  .rwd-table tr:hover:not(:first-child) {
+    background-color: #d8e7f3;
+  }
+  .rwd-table td:before {
+    display: none;
+  }
+  .rwd-table th,
+  .rwd-table td {
+    display: table-cell;
+    padding: .25em .5em;
+  }
+  .rwd-table th:first-child,
+  .rwd-table td:first-child {
+    padding-left: 0;
+  }
+  .rwd-table th:last-child,
+  .rwd-table td:last-child {
+    padding-right: 0;
+  }
+  .rwd-table th,
+  .rwd-table td {
+    padding: 1em !important;
+  }
+}
+
+
+/* THE END OF THE IMPORTANT STUFF */
+
+/* Basic Styling */
+body {
+background: #4B79A1;
+background: -webkit-linear-gradient(to left, #4B79A1 , #283E51);
+background: linear-gradient(to left, #4B79A1 , #283E51);        
+}
+h1 {
+  text-align: center;
+  font-size: 2.4em;
+  color: #f2f2f2;
+}
+.container {
+  display: block;
+  text-align: center;
+}
+h3 {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  font-size: 1.5em;
+  color: #cecece;
+}
+h3:before {
+  content: "\25C0";
+  position: absolute;
+  left: -50px;
+  -webkit-animation: leftRight 2s linear infinite;
+  animation: leftRight 2s linear infinite;
+}
+h3:after {
+  content: "\25b6";
+  position: absolute;
+  right: -50px;
+  -webkit-animation: leftRight 2s linear infinite reverse;
+  animation: leftRight 2s linear infinite reverse;
+}
+@-webkit-keyframes leftRight {
+  0%    { -webkit-transform: translateX(0)}
+  25%   { -webkit-transform: translateX(-10px)}
+  75%   { -webkit-transform: translateX(10px)}
+  100%  { -webkit-transform: translateX(0)}
+}
+@keyframes leftRight {
+  0%    { transform: translateX(0)}
+  25%   { transform: translateX(-10px)}
+  75%   { transform: translateX(10px)}
+  100%  { transform: translateX(0)}
+}
+
+/*
+    Don't look at this last part. It's unnecessary. I was just playing with pixel gradients... Don't judge.
+*/
+/*
+@media screen and (max-width: 601px) {
+  .rwd-table tr {
+    background-image: -webkit-linear-gradient(left, #428bca 137px, #f5f9fc 1px, #f5f9fc 100%);
+    background-image: -moz-linear-gradient(left, #428bca 137px, #f5f9fc 1px, #f5f9fc 100%);
+    background-image: -o-linear-gradient(left, #428bca 137px, #f5f9fc 1px, #f5f9fc 100%);
+    background-image: -ms-linear-gradient(left, #428bca 137px, #f5f9fc 1px, #f5f9fc 100%);
+    background-image: linear-gradient(left, #428bca 137px, #f5f9fc 1px, #f5f9fc 100%);
+  }
+  .rwd-table tr:nth-child(odd) {
+    background-image: -webkit-linear-gradient(left, #428bca 137px, #ebf3f9 1px, #ebf3f9 100%);
+    background-image: -moz-linear-gradient(left, #428bca 137px, #ebf3f9 1px, #ebf3f9 100%);
+    background-image: -o-linear-gradient(left, #428bca 137px, #ebf3f9 1px, #ebf3f9 100%);
+    background-image: -ms-linear-gradient(left, #428bca 137px, #ebf3f9 1px, #ebf3f9 100%);
+    background-image: linear-gradient(left, #428bca 137px, #ebf3f9 1px, #ebf3f9 100%);
+  }
+}*/
+ </style>
+
+</head>
+<body>
+<div class="container">
+ <table>
+  <td>Id: </td>
+   <td><input type="text" name="id" id="user_id"/></td>
+  </tr>
+  <tr>
+   <td>Player Id: </td>
+   <td><input type="text" name="id" id="pi" /></td>
+  </tr>
+  <tr>
+   <td>Team Name: </td>
+   <td><input type="text" name="name" id="tn" /></td>
+  </tr>
+  <tr>
+   <td>Place</td>
+   <td><select id="pl" name="pl">
+				 		   <option value="🥇 1st Place">1st Place</option>
+                    					   <option value="🥈 2nd Place">2nd Place</option>
+                  					   <option value="🥉 3rd Place">3rd Place</option>
+                    					   <option value="🎖Most Killed Player">Most Killed Player</option>
+                  					   <option value="🏆 Best Team">Best Team</option>
+						</select></td>
+  </tr>
+  <tr>
+   <td>Prize</td>
+   <td><input type="text"  name="phone" id="pz" /></td>
+  </tr>
+  <tr>
+   <td>Match</td>
+   <td><select id="m" name="m">
+				 		   <option value="Squad">Squad</option>
+                    					   <option value="Duo">Duo</option>
+                  					   <option value="Solo">Solo</option>
+						</select></td>
+  </tr>
+  <tr>
+   <td>Date</td>
+   <td><input type="text" name="phone" id="d" /></td>
+  </tr>
+  <tr>
+   <td colspan="2">
+    <input type="button" value="Save" onclick="save_user();" />
+    <input type="button" value="Update" onclick="update_user();" />
+    <input type="button" value="Delete" onclick="delete_user();" />
+   </td>
+  </tr>
+ </table>
+ 
+</div>
+ 
+
+ <div class="container">
+<h1>Result</h1>
+  <table class="rwd-table" id="tbl_users_list">
+    <tbody>
+      <tr>
+   
+   <th>Taem NAME</th>
+   <th>Player Id</th>
+   <th>Place</th>
+   <th>Prize ₹</th>
+   <th>Match</th>
+   <th>Date</th>
+      </tr>
+      
+    </tbody>
+  </table>
+  <h3>Checking</h3>
+</div>
+ <script>
+ 
+  var tblUsers = document.getElementById('tbl_users_list');
+  var databaseRef = firebase.database().ref('result/');
+  var rowIndex = 1;
+  
+  databaseRef.once('value', function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+   var childKey = childSnapshot.key;
+   var childData = childSnapshot.val();
+   
+   var row = tblUsers.insertRow(rowIndex);
+  // var cellId = row.insertCell(0);
+   var cellTn = row.insertCell(0);
+   var cellPi = row.insertCell(1);
+   var cellPl = row.insertCell(2);
+   var cellPz = row.insertCell(3);   
+   var cellM = row.insertCell(4);   
+   var cellD = row.insertCell(5);
+     
+   //cellId.appendChild(document.createTextNode(childKey));
+   cellTn.appendChild(document.createTextNode(childData.tn));
+   cellPi.appendChild(document.createTextNode(childData.pi));
+   cellPl.appendChild(document.createTextNode(childData.pl));
+   cellPz.appendChild(document.createTextNode(childData.pz));
+   cellM.appendChild(document.createTextNode(childData.m));
+   cellD.appendChild(document.createTextNode(childData.d));
+     
+   rowIndex = rowIndex + 1;
+    });
+  });
+   
+  function save_user(){
+   var tn = document.getElementById('tn').value;
+   var pi = document.getElementById('pi').value;  
+   var pl = document.getElementById('pl').value;  
+   var pz = document.getElementById('pz').value;  
+   var m = document.getElementById('m').value;  
+   var d = document.getElementById('d').value;
+   var uid = firebase.database().ref().child('users').push().key;
+   var data = {
+    tn: tn,
+    user_id: uid,
+    pi: pi,
+    pl: pl,
+    pz: pz,
+    m: m,
+    d: d
+   }
+   
+   var updates = {};
+   updates['/result/' + uid] = data;
+   firebase.database().ref().update(updates);
+   
+   alert('The user is created successfully!');
+   reload_page();
+  }
+  
+  function update_user(){
+   var tn = document.getElementById('tn').value;
+   var pi = document.getElementById('pi').value;  
+   var pl = document.getElementById('pl').value;  
+   var pz = document.getElementById('pz').value;  
+   var m = document.getElementById('m').value;  
+   var d = document.getElementById('d').value;
+   
+   var data = {
+    tn: tn,
+    user_id: user_id,
+    pi: pi,
+    pl: pl,
+    pz: pz,
+    m: m,
+    d: d
+   }
+   
+   var updates = {};
+   updates['/result/' + user_id] = data;
+   firebase.database().ref().update(updates);
+   
+   alert('The user is updated successfully!');
+   
+   reload_page();
+  }
+  
+  function delete_user(){
+   var user_id = document.getElementById('user_id').value;
+  
+   firebase.database().ref().child('/result/' + user_id).remove();
+   alert('The user is deleted successfully!');
+   reload_page();
+  }
+  
+  function reload_page(){
+   window.location.reload();
+  }
+  
+ </script>
+ 
+</body>
+</html>
