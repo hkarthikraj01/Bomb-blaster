@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Book the Tournament</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="css/mainz.css">
+<!--===============================================================================================-->
+<style>
+  .alert{
+    text-align: center;
+    padding:10px;
+    background:#79c879;
+    color:#fff;
+    margin-bottom:10px;
+    display:none;
+  }
+</style>
+</head>
+<body>
+
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form"  id="contactForm" >
+				<span class="contact100-form-title">
+					Book the Torunament
+				</span>
+
+				<label class="label-input100" for="first-name">Your Name *</label>
+				<div class="wrap-input100  validate-input">
+					<input id="name" class="input100" type="text" name="name" placeholder="Payer Name">
+					<span class="focus-input100"></span>
+				</div>
+				<label class="label-input100" for="first-name">Match</label>
+				<div class="wrap-input100  validate-input">
+					<div>
+						<select id="match" name="match">
+				 		   <option selected value="Squad">Squad</option>
+                    					   <option selected disabled value="Duo">Duo</option>
+                  					   <option selected disabled value="Solo">Solo</option>
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+
+
+				<label class="label-input100" for="email">Email Address *</label>
+				<div class="wrap-input100 validate-input">
+					<input id="email" class="input100" type="text" name="email" placeholder="You Get Notification About Tournament">
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="phone">Phone Number</label>
+				<div class="wrap-input100">
+					<input id="phone" class="input100" type="text" name="phone" placeholder="Optional">
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="phone">PUBG Lite ID</label>
+				<div class="wrap-input100">
+					<input id="tm1" class="input100" type="text" name="phone" placeholder="Player l">
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="phone">PUBG Lite ID</label>
+				<div class="wrap-input100">
+					<input id="tm2" class="input100" type="text" name="phone" placeholder="Player 2">
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="phone">PUBG Lite ID</label>
+				<div class="wrap-input100">
+					<input id="tm3" class="input100" type="text" name="phone" placeholder="Player 3">
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="phone">PUBG Lite ID</label>
+				<div class="wrap-input100">
+					<input id="tm4" class="input100" type="text" name="phone" placeholder="Player 4">
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="message">Message *</label>
+				<div class="wrap-input100 validate-input">
+					<textarea id="message" class="input100" name="message" placeholder="Please enter your comments..."></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<button type="submit" class="contact100-form-btn">
+						<span>
+							Submit
+							<i class="zmdi zmdi-arrow-right m-l-8"></i>
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase.js"></script>
+    <script src="main.js"></script>
+
+
+
+
+
+</body>
+</html>
