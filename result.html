@@ -298,7 +298,7 @@ h3:after {
    }
    
    var updates = {};
-  
+   updates['/Tournament-SQUAD/' + pi] = data;
    firebase.database().ref().update(updates);
    
    alert('The user is created successfully!');
@@ -323,7 +323,7 @@ h3:after {
    }
    
    var updates = {};
-  
+   updates['/Tournament-SQUAD/' + pi] = data;
    firebase.database().ref().update(updates);
    
    alert('The user is updated successfully!');
