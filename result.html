@@ -291,7 +291,7 @@ h3:after {
    var pz = document.getElementById('pz').value;  
    var m = document.getElementById('m').value;  
    var d = document.getElementById('d').value;
-   
+   var uid = firebase.database().ref().child('users').push().key;
    var data = {
     tn: tn,
     user_id: uid,
