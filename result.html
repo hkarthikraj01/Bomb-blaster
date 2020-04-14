@@ -264,13 +264,13 @@ h3:after {
    var childData = childSnapshot.val();
    
    var row = tblUsers.insertRow(rowIndex);
-   var cellId = row.insertCell(6);
-   var cellTn = row.insertCell(0);
-   var cellPi = row.insertCell(1);
-   var cellPl = row.insertCell(2);
-   var cellPz = row.insertCell(3);   
-   var cellM = row.insertCell(4);   
-   var cellD = row.insertCell(5);
+   var cellId = row.insertCell(0);
+   var cellTn = row.insertCell(1);
+   var cellPi = row.insertCell(2);
+   var cellPl = row.insertCell(3);
+   var cellPz = row.insertCell(4);   
+   var cellM = row.insertCell(5);   
+   var cellD = row.insertCell(6);
      
    cellId.appendChild(document.createTextNode(childKey));
    cellTn.appendChild(document.createTextNode(childData.tn));
