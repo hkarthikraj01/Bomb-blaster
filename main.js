@@ -57,9 +57,3 @@ function saveMessage(name, email, phone, message){
     message:message
   });
 }
-const list = document querySelector("#list");
-db.collection("Contact form").get().then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
-      list.innerHTML += "<p>"+ doc.data().name +"</p>" 
-    });
-});
