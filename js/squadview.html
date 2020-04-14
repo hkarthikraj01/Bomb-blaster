@@ -16,240 +16,20 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 </script>
- <style>
-  @import "bourbon";
+<link rel="icon" type="image/png" href="https://colorlib.com/etc/tb/Table_Responsive_v1/images/icons/favicon.ico" />
 
-// Breakpoints
-$bp-maggie: 15em; 
-$bp-lisa: 30em;
-$bp-bart: 48em;
-$bp-marge: 62em;
-$bp-homer: 75em;
+<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/bootstrap/css/bootstrap.min.css">
 
-// Styles
-* {
- @include box-sizing(border-box);
- 
- &:before,
- &:after {
-   @include box-sizing(border-box);
- }
-}
+<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
-body {
-  font-family: $helvetica;
-  color: rgba(94,93,82,1);
-}
+<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/animate/animate.css">
 
-a {
-  color: rgba(51,122,168,1);
-  
-  &:hover,
-  &:focus {
-    color: rgba(75,138,178,1); 
-  }
-}
+<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/select2/select2.min.css">
 
-.container {
-  margin: 5% 3%;
-  
-  @media (min-width: $bp-bart) {
-    margin: 2%; 
-  }
-  
-  @media (min-width: $bp-homer) {
-    margin: 2em auto;
-    max-width: $bp-homer;
-  }
-}
+<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/vendor/perfect-scrollbar/perfect-scrollbar.css">
 
-.responsive-table {
-  width: 100%;
-  margin-bottom: 1.5em;
-  border-spacing: 0;
-  
-  @media (min-width: $bp-bart) {
-    font-size: .9em; 
-  }
-  
-  @media (min-width: $bp-marge) {
-    font-size: 1em; 
-  }
-  
-  thead {
-    // Accessibly hide <thead> on narrow viewports
-    position: absolute;
-    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-    padding: 0;
-    border: 0;
-    height: 1px; 
-    width: 1px; 
-    overflow: hidden;
-    
-    @media (min-width: $bp-bart) {
-      // Unhide <thead> on wide viewports
-      position: relative;
-      clip: auto;
-      height: auto;
-      width: auto;
-      overflow: auto;
-    }
-    
-    th {
-      background-color: rgba(29,150,178,1);
-      border: 1px solid rgba(29,150,178,1);
-      font-weight: normal;
-      text-align: center;
-      color: white;
-      
-      &:first-of-type {
-        text-align: left; 
-      }
-    }
-  }
-  
-  // Set these items to display: block for narrow viewports
-  tbody,
-  tr,
-  th,
-  td {
-    display: block;
-    padding: 0;
-    text-align: left;
-    white-space: normal;
-  }
-  
-  tr {   
-    @media (min-width: $bp-bart) {
-      // Undo display: block 
-      display: table-row; 
-    }
-  }
-  
-  th,
-  td {
-    padding: .5em;
-    vertical-align: middle;
-    
-    @media (min-width: $bp-lisa) {
-      padding: .75em .5em; 
-    }
-    
-    @media (min-width: $bp-bart) {
-      // Undo display: block 
-      display: table-cell;
-      padding: .5em;
-    }
-    
-    @media (min-width: $bp-marge) {
-      padding: .75em .5em; 
-    }
-    
-    @media (min-width: $bp-homer) {
-      padding: .75em; 
-    }
-  }
-  
-  caption {
-    margin-bottom: 1em;
-    font-size: 1em;
-    font-weight: bold;
-    text-align: center;
-    
-    @media (min-width: $bp-bart) {
-      font-size: 1.5em;
-    }
-  }
-  
-  tfoot {
-    font-size: .8em;
-    font-style: italic;
-    
-    @media (min-width: $bp-marge) {
-      font-size: .9em;
-    }
-  }
-  
-  tbody {
-    @media (min-width: $bp-bart) {
-      // Undo display: block 
-      display: table-row-group; 
-    }
-    
-    tr {
-      margin-bottom: 1em;
-      
-      @media (min-width: $bp-bart) {
-        // Undo display: block 
-        display: table-row;
-        border-width: 1px;
-      }
-      
-      &:last-of-type {
-        margin-bottom: 0; 
-      }
-      
-      &:nth-of-type(even) {
-        @media (min-width: $bp-bart) {
-          background-color: rgba(94,93,82,.1);
-        }
-      }
-    }
-    
-    th[scope="row"] {
-      background-color: rgba(29,150,178,1);
-      color: white;
-      
-      @media (min-width: $bp-lisa) {
-        border-left: 1px solid  rgba(29,150,178,1);
-        border-bottom: 1px solid  rgba(29,150,178,1);
-      }
-      
-      @media (min-width: $bp-bart) {
-        background-color: transparent;
-        color: rgba(94,93,82,1);
-        text-align: left;
-      }
-    }
-    
-    td {
-      text-align: right;
-      
-      @media (min-width: $bp-bart) {
-        border-left: 1px solid  rgba(29,150,178,1);
-        border-bottom: 1px solid  rgba(29,150,178,1);
-        text-align: center; 
-      }
-      
-      &:last-of-type {
-        @media (min-width: $bp-bart) {
-          border-right: 1px solid  rgba(29,150,178,1);
-        } 
-      }
-    }
-    
-    td[data-type=currency] {
-      text-align: right; 
-    }
-    
-    td[data-title]:before {
-      content: attr(data-title);
-      float: left;
-      font-size: .8em;
-      color: rgba(94,93,82,.75);
-      
-      @media (min-width: $bp-lisa) {
-        font-size: .9em; 
-      }
-      
-      @media (min-width: $bp-bart) {
-        // Don’t show data-title labels 
-        content: none; 
-      }
-    } 
-  }
-}
- </style>
+<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/css/util.css">
+<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/tb/Table_Responsive_v1/css/main.css">
 </head>
 <body>
  <!--table> 
@@ -292,11 +72,12 @@ a {
    </td>
   </tr>
  </table-->
- <div class="container">
-
  <h3>Squad Tournament List</h3>
- 
- <table class="responsive-table" id="tbl_users_list" border="1">
+ <div class="limiter">
+<div class="container-table100">
+<div class="wrap-table100">
+<div class="table100">
+ <table id="tbl_users_list" border="1">
   <tr>
    <td>#ID</td>
    <td>NAME </td>
@@ -310,7 +91,10 @@ a {
 
   </tr>
  </table>
- </div> 
+ </div>
+</div>
+</div>
+</div>
  <script>
  
   var tblUsers = document.getElementById('tbl_users_list');
